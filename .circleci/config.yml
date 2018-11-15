@@ -20,3 +20,23 @@ jobs:
       - run:
           name: Print the uname info
           command: "uname -a"
+  build:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run:
+          name: Greeting
+          command: echo Hello, world.
+      - run:
+          name: Print the Current Time
+          command: date
+      - run:
+          name: Print the whoami
+          command: whoami
+      - run:
+          name: Print the current directory
+          command: pwd
+      - run:
+          name: Print the uname info
+          command: "uname -a"
