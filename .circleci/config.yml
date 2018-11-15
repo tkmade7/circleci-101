@@ -1,13 +1,13 @@
 version: 2
 jobs:
-  build:
+  one:
     docker:
       - image: debian:stretch
     steps:
       - checkout
       - run:
           name: Greeting
-          command: echo Hello, world.
+          command: echo Hello, One.
       - run:
           name: Print the Current Time
           command: date
@@ -20,14 +20,15 @@ jobs:
       - run:
           name: Print the uname info
           command: "uname -a"
-  build:
+      - run: sleep 25
+  two:
     docker:
-      - image: debian:stretch
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run:
           name: Greeting
-          command: echo Hello, world.
+          command: echo Hello, Two.
       - run:
           name: Print the Current Time
           command: date
@@ -40,3 +41,10 @@ jobs:
       - run:
           name: Print the uname info
           command: "uname -a"
+      - run: sleep 25
+workflows:
+  version: 2
+  one_and_two:
+    jobs:
+      - one
+      - two
