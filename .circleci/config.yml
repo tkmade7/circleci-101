@@ -17,6 +17,6 @@ jobs:
       - run:
           name: Print the current directory
           command: pwd
-                - run:
+      - run:
           name: Print the uname info
           command: "uname -a"
