@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Greeting
-          command: echo Hello, One;date;whoami;pwd;"uname -a";sleep 25
+          command: echo Hello, One;date;whoami;pwd;uname -a;sleep 25
   two:
     docker:
       - image: circleci/ruby:2.4.1
