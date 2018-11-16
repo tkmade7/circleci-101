@@ -56,16 +56,28 @@ workflows:
     version: 2
     one_and_two:
         jobs:
-            - build1
+            - build1:
+                filters:
+                    branches:
+                        only: master
             - T1:
                 requires:
                     - build1
+                filters:
+                    branches:
+                        only: qa
             - T2:
                 requires:
                     - build1
+                filters:
+                    branches:
+                        only: qa
             - T3:
                 requires:
                     - build1
+                filters:
+                    branches:
+                        only: qa
             - hold:
                 type: approval
                 requires:
@@ -79,4 +91,4 @@ workflows:
                     - T3
                 filters:
                     branches:
-                        only: qa
+                        only: master
