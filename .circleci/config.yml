@@ -15,7 +15,7 @@ jobs:
             root: my_workspace
             paths:
                 - demo
-  build2:
+  deploy:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
@@ -43,7 +43,7 @@ workflows:
                 type: approval
                 requires:
                     - build1
-            - build2:
+            - deploy:
                 requires:
                     - hold
                     - build1
