@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build1:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
@@ -15,7 +15,7 @@ jobs:
             root: my_workspace
             paths:
                 - demo
-  build:
+  build2:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
