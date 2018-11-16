@@ -38,9 +38,11 @@ workflows:
     version: 2
     one_and_two:
         jobs:
+            - build1
             - hold:
                 type: approval
-            - build1
+                requires:
+                    - build1
             - build2:
                 requires:
                     - hold
