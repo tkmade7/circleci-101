@@ -12,9 +12,9 @@ jobs:
           mkdir -p my_workspace
       - run: echo "Match my workspaces" > my_workspace/demo;pwd;ls -latr; ls -latr ./my_workspace;cat ./my_workspace/demo
       - persist_to_workspace:
-          root: ./my_workspace
+          root: .
           paths:
-            - demo
+            - my_workspace/demo
   two:
     docker:
       - image: circleci/ruby:2.4.1
