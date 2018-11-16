@@ -22,11 +22,11 @@ jobs:
       - checkout
       - run:
             name: Greeting
-            command: echo Hello, Two;date;whoami;pwd;uname -a;sleep 25
+            command: echo Hello, Two;date;whoami;pwd;uname -a
       - attach_workspace:
             at: my_workspace
       - run: |
-          if [[ `cat /root/project/my_workspace/demo` == "Match my workspaces" ]]; then
+          if [[ `cat my_workspace/demo` == "Match my workspaces" ]]; then
             echo "It Worked!";
           else
             echo "Nope!"; exit 1
