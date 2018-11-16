@@ -40,9 +40,7 @@ workflows:
         jobs:
             - hold:
                 type: approval
-            - build1:
-                requires:
-                    - hold
+            - build1
             - build2:
                 requires:
-                    - build1
+                    - hold
