@@ -15,19 +15,19 @@ jobs:
             root: my_workspace
             paths:
                 - demo
-  1:
+  T1:
     docker:
       - image: debian:stretch
     steps:
       - checkout
       - run: echo "Parallel Job1"
-  2:
+  T2:
     docker:
       - image: debian:stretch
     steps:
       - checkout
       - run: echo "Parallel Job2"
-  3:
+  T3:
     docker:
       - image: debian:stretch
     steps:
@@ -57,18 +57,18 @@ workflows:
     one_and_two:
         jobs:
             - build1
-            - 1:
+            - T1:
                 requires: build1
-            - 2:
+            - T2:
                 requires: build1
-            - 3:
+            - T3:
                 requires: build1
             - hold:
                 type: approval
                 requires:
-                    - 1
-                    - 2
-                    - 3
+                    - T1
+                    - T2
+                    - T3
             - deploy:
                 requires:
                     - hold
