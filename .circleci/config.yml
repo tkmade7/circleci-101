@@ -8,6 +8,14 @@ jobs:
       - run:
           name: Greeting
           command: echo Hello, One;date;whoami;pwd;uname -a;sleep 25
+      - run:
+          mkdir -p my_workspace
+      - run: 
+          echo "Match my workspaces" > my_worspace/demo
+      - persist_to_workspace:
+          root: my_workspace
+          paths:
+            - demo
   two:
     docker:
       - image: circleci/ruby:2.4.1
@@ -15,23 +23,20 @@ jobs:
       - checkout
       - run:
           name: Greeting
-          command: echo Hello, Two.
-      - run:
-          name: Print the Current Time
-          command: date
-      - run:
-          name: Print the whoami
-          command: whoami
-      - run:
-          name: Print the current directory
-          command: pwd
-      - run:
-          name: Print the uname info
-          command: "uname -a"
-      - run: sleep 25
+          command: echo Hello, Two;date;whoami;pwd;uname -a;sleep 25
+      - attach_workspace:
+          at: my_workspace
+      - run: |
+          if [[ `cat my_workspace/demo` == "Match my workspaces" ]]; then
+            echo "It Worked!";
+          else
+            echo "Nope!"; exit 1
+          fi
 workflows:
   version: 2
   one_and_two:
     jobs:
       - one
       - two
+         - requires: 
+            - one
