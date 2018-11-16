@@ -15,7 +15,7 @@ jobs:
             root: my_workspace
             paths:
                 - demo
-  test1:
+  build:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
