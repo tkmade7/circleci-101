@@ -17,12 +17,15 @@ jobs:
                 - demo
   1:
     steps:
+      - checkout
       - run: echo "Parallel Job1"
   2:
     steps:
+      - checkout
       - run: echo "Parallel Job2"
   3:
     steps:
+      - checkout
       - run: echo "Parallel Job3"
   deploy:
     docker:
