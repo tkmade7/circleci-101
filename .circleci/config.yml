@@ -15,24 +15,6 @@ jobs:
             root: my_workspace
             paths:
                 - demo
-  T1:
-    docker:
-      - image: debian:stretch
-    steps:
-      - checkout
-      - run: echo "Parallel Job1"
-  T2:
-    docker:
-      - image: debian:stretch
-    steps:
-      - checkout
-      - run: echo "Parallel Job2"
-  T3:
-    docker:
-      - image: debian:stretch
-    steps:
-      - checkout
-      - run: echo "Parallel Job3"
   deploy:
     docker:
       - image: circleci/ruby:2.4.1
@@ -57,22 +39,11 @@ workflows:
     one_and_two:
         jobs:
             - build1
-            - T1:
-                requires: build1
-            - T2:
-                requires: build1
-            - T3:
-                requires: build1
             - hold:
                 type: approval
-                requires:
-                    - T1
-                    - T2
-                    - T3
+				requires:
+					- build1
             - deploy:
                 requires:
                     - hold
                     - build1
-                    - T1
-                    - T2
-                    - T3
