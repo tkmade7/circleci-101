@@ -6,25 +6,25 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, One;date;whoami;pwd;uname -a;sleep 10
+            name: Greeting
+            command: echo Hello, One;date;whoami;pwd;uname -a;sleep 10
       - run:
-          mkdir -p my_workspace
+            mkdir -p my_workspace
       - run: echo "Match my workspaces" > my_workspace/demo;pwd;ls -latr; ls -latr ./my_workspace;cat ./my_workspace/demo
       - persist_to_workspace:
-          root: .
-          paths:
-            - my_workspace/demo
+            root: ./my_workspace
+            paths:
+                - demo
   two:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, Two;date;whoami;pwd;uname -a;sleep 25
+            name: Greeting
+            command: echo Hello, Two;date;whoami;pwd;uname -a;sleep 25
       - attach_workspace:
-          at: my_workspace
+            at: my_workspace
       - run: |
           if [[ `cat /root/project/my_workspace/demo` == "Match my workspaces" ]]; then
             echo "It Worked!";
@@ -32,10 +32,10 @@ jobs:
             echo "Nope!"; exit 1
           fi
 workflows:
-  version: 2
-  one_and_two:
-    jobs:
-      - one
-      - two:
-          requires: 
+    version: 2
+    one_and_two:
+        jobs:
             - one
+            - two:
+                requires:
+                    - one
