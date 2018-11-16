@@ -22,9 +22,12 @@ jobs:
       - checkout
       - run:
             name: Greeting
-            command: echo Hello, Two;date;whoami;pwd;uname -a
+            command: echo Hello, Two;date;whoami;pwd;uname -a;ls -latr
       - attach_workspace:
             at: my_workspace
+      - run: 
+            name: Do ls -latr after archiving workspace
+            command: ls -latr
       - run: |
           if [[ `cat my_workspace/demo` == "Match my workspaces" ]]; then
             echo "It Worked!";
