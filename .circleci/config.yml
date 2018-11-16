@@ -44,3 +44,4 @@ workflows:
             - build2:
                 requires:
                     - hold
+                    - build1
