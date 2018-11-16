@@ -15,6 +15,15 @@ jobs:
             root: my_workspace
             paths:
                 - demo
+  1:
+    steps:
+      - run: echo "Parallel Job1"
+  2:
+    steps:
+      - run: echo "Parallel Job2"
+  3:
+    steps:
+      - run: echo "Parallel Job3"
   deploy:
     docker:
       - image: circleci/ruby:2.4.1
@@ -39,10 +48,18 @@ workflows:
     one_and_two:
         jobs:
             - build1
+            - 1:
+                requires: build1
+            - 2:
+                requires: build1
+            - 3:
+                requires: build1
             - hold:
                 type: approval
                 requires:
-                    - build1
+                    - 1
+                    - 2
+                    - 3
             - deploy:
                 requires:
                     - hold
