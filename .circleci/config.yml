@@ -39,6 +39,8 @@ workflows:
     one_and_two:
         jobs:
             - build1
+                requires:
+                    - hold
             - build2:
                 requires:
                     - build1
