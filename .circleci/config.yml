@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  one:
+  build:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
@@ -15,7 +15,7 @@ jobs:
             root: my_workspace
             paths:
                 - demo
-  two:
+  test1:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
@@ -34,12 +34,3 @@ jobs:
           else
             echo "Nope!"; exit 1
           fi
-
-workflows:
-    version: 2
-    one_and_two:
-        jobs:
-            - one
-            - two:
-                requires:
-                    - one
