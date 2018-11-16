@@ -11,7 +11,7 @@ jobs:
       - run:
           mkdir -p my_workspace
       - run: 
-          echo "Match my workspaces" > my_worspace/demo
+          echo "Match my workspaces" > my_workspace/demo
       - persist_to_workspace:
           root: my_workspace
           paths:
