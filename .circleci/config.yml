@@ -65,19 +65,19 @@ workflows:
                     - build1
                 filters:
                     branches:
-                        only: qa
+                        only: master
             - T2:
                 requires:
                     - build1
                 filters:
                     branches:
-                        only: qa
+                        only: master
             - T3:
                 requires:
                     - build1
                 filters:
                     branches:
-                        only: qa
+                        only: master
             - hold:
                 type: approval
                 requires:
