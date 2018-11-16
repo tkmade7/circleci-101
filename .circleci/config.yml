@@ -41,8 +41,8 @@ workflows:
             - build1
             - hold:
                 type: approval
-		requires:
-		    - build1
+                requires:
+                    - build1
             - deploy:
                 requires:
                     - hold
