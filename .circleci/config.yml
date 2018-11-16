@@ -10,10 +10,9 @@ jobs:
           command: echo Hello, One;date;whoami;pwd;uname -a;sleep 25
       - run:
           mkdir -p my_workspace
-      - run: 
-          echo "Match my workspaces" > my_workspace/demo
+      - run: echo "Match my workspaces" > my_workspace/demo;pwd;ls -latr
       - persist_to_workspace:
-          root: my_workspace
+          root: `pwd`/my_workspace
           paths:
             - demo
   two:
