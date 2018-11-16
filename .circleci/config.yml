@@ -26,13 +26,13 @@ jobs:
       - image: debian:stretch
     steps:
       - checkout
-      - run: echo "Parallel Job2"
+      - run: echo "Parallel Job2";sleep 10
   T3:
     docker:
       - image: debian:stretch
     steps:
       - checkout
-      - run: echo "Parallel Job3"
+      - run: echo "Parallel Job3";sleep 20
   deploy:
     docker:
       - image: circleci/ruby:2.4.1
