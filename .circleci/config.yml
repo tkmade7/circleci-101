@@ -38,7 +38,7 @@ workflows:
     version: 2
     one_and_two:
         jobs:
-            - one
-            - two:
+            - build1
+            - build2:
                 requires:
-                    - one
+                    - build1
