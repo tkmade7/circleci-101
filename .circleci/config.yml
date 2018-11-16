@@ -15,6 +15,24 @@ jobs:
             root: my_workspace
             paths:
                 - demo
+  T1:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run: echo "Parallel Job1"
+  T2:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run: echo "Parallel Job2"
+  T3:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run: echo "Parallel Job3"
   deploy:
     docker:
       - image: circleci/ruby:2.4.1
