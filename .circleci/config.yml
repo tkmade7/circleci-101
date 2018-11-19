@@ -16,6 +16,8 @@ jobs:
             paths:
                 - demo
   T1:
+    docker:
+      - image: debian:stretch
     steps:
       - checkout
       - run: echo "Parallel Job1"
