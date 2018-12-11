@@ -5,25 +5,25 @@ workflows:
             - build1:
                 filters:
                     branches:
-                        only: master
+                        only: ${BRANCH_NAME}
             - T1:
                 requires:
                     - build1
                 filters:
                     branches:
-                        only: master
+                        only: ${BRANCH_NAME}
             - T2:
                 requires:
                     - build1
                 filters:
                     branches:
-                        only: master
+                        only: ${BRANCH_NAME}
             - T3:
                 requires:
                     - build1
                 filters:
                     branches:
-                        only: master
+                        only: ${BRANCH_NAME}
             - hold:
                 type: approval
                 requires:
@@ -37,7 +37,7 @@ workflows:
                     - T3
                 filters:
                     branches:
-                        only: master
+                        only: ${BRANCH_NAME}
 
 
 version: 2
@@ -49,6 +49,9 @@ jobs:
       - checkout
       - run:
             name: Greeting
+            command: echo ${BRANCH_NAME}
+      - run:
+            name: Current Branch
             command: echo Hello, One;date;whoami;pwd;uname -a
       - run:
             mkdir -p my_workspace
