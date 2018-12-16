@@ -27,7 +27,6 @@ workflows:
                         only: ${BRANCH_NAME}
             - deploy:
                 requires:
-                    - hold
                     - build1
                     - T1
                     - T2
