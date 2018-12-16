@@ -20,14 +20,11 @@ workflows:
                         only: ${BRANCH_NAME}
             - T3:
                 requires:
-                    - build1
+                    - T1
+                    - T2
                 filters:
                     branches:
                         only: ${BRANCH_NAME}
-            - hold:
-                type: approval
-                requires:
-                    - build1
             - deploy:
                 requires:
                     - hold
