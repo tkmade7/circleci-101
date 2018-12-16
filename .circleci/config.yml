@@ -1,41 +1,3 @@
-workflows:
-    version: 2
-    one_and_two:
-        jobs:
-            - build1:
-                filters:
-                    branches:
-                        only: ${BRANCH_NAME}
-            - T1:
-                requires:
-                    - build1
-                filters:
-                    branches:
-                        only: ${BRANCH_NAME}
-            - T2:
-                requires:
-                    - build1
-                filters:
-                    branches:
-                        only: ${BRANCH_NAME}
-            - T3:
-                requires:
-                    - T1
-                    - T2
-                filters:
-                    branches:
-                        only: ${BRANCH_NAME}
-            - deploy:
-                requires:
-                    - build1
-                    - T1
-                    - T2
-                    - T3
-                filters:
-                    branches:
-                        only: ${BRANCH_NAME}
-
-
 version: 2
 jobs:
   build1:
@@ -93,3 +55,39 @@ jobs:
           else
             echo "Nope!"; exit 1
           fi
+workflows:
+    version: 2
+    one_and_two:
+        jobs:
+            - build1:
+                filters:
+                    branches:
+                        only: ${BRANCH_NAME}
+            - T1:
+                requires:
+                    - build1
+                filters:
+                    branches:
+                        only: ${BRANCH_NAME}
+            - T2:
+                requires:
+                    - build1
+                filters:
+                    branches:
+                        only: ${BRANCH_NAME}
+            - T3:
+                requires:
+                    - T1
+                    - T2
+                filters:
+                    branches:
+                        only: ${BRANCH_NAME}
+            - deploy:
+                requires:
+                    - build1
+                    - T1
+                    - T2
+                    - T3
+                filters:
+                    branches:
+                        only: ${BRANCH_NAME}
