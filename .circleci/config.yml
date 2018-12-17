@@ -15,42 +15,6 @@ jobs:
       - run:
             mkdir -p my_workspace
       - run: echo "Match my workspaces" > my_workspace/demo;chmod 775 my_workspace/demo;pwd;ls -latr; ls -latr ./my_workspace;cat ./my_workspace/demo
-  T1:
-    docker:
-      - image: debian:stretch
-    steps:
-      - checkout
-      - run: echo "Parallel Job1"
-  T2:
-    docker:
-      - image: debian:stretch
-    steps:
-      - checkout
-      - run: echo "Parallel Job2"
-  T3:
-    docker:
-      - image: debian:stretch
-    steps:
-      - checkout
-      - run: echo "Parallel Job3"
-  deploy:
-    working_directory: ~/deploy_workspace
-    docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - checkout
-      - run:
-            name: Greeting
-            command: echo Hello, Two;date;whoami;pwd;uname -a;ls -latr
-      - run: 
-            name: Do ls -latr after archiving workspace
-            command: ls -latr
-      - run: |
-          if [[ `cat my_workspace/demo` == "Match my workspaces" ]]; then
-            echo "It Worked!";
-          else
-            echo "Nope!"; exit 1
-          fi
 workflows:
   version: 2
   build_and_test:
