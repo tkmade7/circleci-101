@@ -52,10 +52,10 @@ jobs:
             echo "Nope!"; exit 1
           fi
 workflows:
-    version: 2
-    build_and_test:
-        jobs:
-          -  SINGLE-SIGN-ON:
-                filters:
-                    branches:
-                       only: ${CIRCLE_BRANCH}
+  version: 2
+  build_and_test:
+    jobs:
+      - SINGLE-SIGN-ON:
+          filters:
+            branches:
+               only: ${CIRCLE_BRANCH}
