@@ -66,13 +66,13 @@ workflows:
                         only: ${BRANCH_NAME}
           - T1:
                 requires:
-                    - build1
+                    - build
                 filters:
                     branches:
                         only: ${BRANCH_NAME}
           - T2:
                 requires:
-                    - build1
+                    - build
                 filters:
                     branches:
                         only: ${BRANCH_NAME}
@@ -85,7 +85,7 @@ workflows:
                         only: ${BRANCH_NAME}
           - deploy:
                 requires:
-                  - build1
+                  - build
                   - T1
                   - T2
                   - T3
