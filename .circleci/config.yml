@@ -1,6 +1,7 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/build_workspace
     docker:
       - image: circleci/ruby:2.4.1
     steps:
@@ -37,6 +38,7 @@ jobs:
       - checkout
       - run: echo "Parallel Job3"
   deploy:
+    working_directory: ~/deploy_workspace
     docker:
       - image: circleci/ruby:2.4.1
     steps:
