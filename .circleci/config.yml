@@ -15,10 +15,6 @@ jobs:
       - run:
             mkdir -p my_workspace
       - run: echo "Match my workspaces" > my_workspace/demo;chmod 775 my_workspace/demo;pwd;ls -latr; ls -latr ./my_workspace;cat ./my_workspace/demo
-      - persist_to_workspace:
-            root: ~/build_workspace/my_workspace
-            paths:
-                - demo
   T1:
     docker:
       - image: debian:stretch
@@ -46,8 +42,6 @@ jobs:
       - run:
             name: Greeting
             command: echo Hello, Two;date;whoami;pwd;uname -a;ls -latr
-      - attach_workspace:
-            at: my_workspace
       - run: 
             name: Do ls -latr after archiving workspace
             command: ls -latr
