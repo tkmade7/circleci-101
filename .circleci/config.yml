@@ -55,4 +55,11 @@ workflows:
     version: 2
     build_and_test:
         jobs:
-          - SINGLE-SIGN-ON
+          - SINGLE-SIGN-ON:
+                filters:
+                    branches:
+                        only: ${CIRCLE_BRANCH}
+          - T1:
+                filters:
+                    branches:
+                        only: ${CIRCLE_BRANCH}
