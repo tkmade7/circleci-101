@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build1:
+  build:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
@@ -60,7 +60,7 @@ workflows:
     version: 2
     one_and_two:
         jobs:
-          - build1:
+          - build:
                 filters:
                     branches:
                         only: ${BRANCH_NAME}
