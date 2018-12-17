@@ -56,3 +56,6 @@ workflows:
   build_and_test:
     jobs:
       - SINGLE-SIGN-ON
+      - Test1
+          requires:
+            - SINGLE-SIGN-ON
