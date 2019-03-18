@@ -5,7 +5,11 @@ jobs:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "24:89:e1:f3:46:45:07:6a:2a:af:ce:a0:cb:52:c2:e0"
       - checkout
+      -run: git clone git@github.com:tkmade7/Scala-CI.git
       - run:
           name: Greeting
           command: echo ${BRANCH_NAME}
