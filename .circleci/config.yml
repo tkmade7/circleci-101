@@ -7,7 +7,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "24:89:e1:f3:46:45:07:6a:2a:af:ce:a0:cb:52:c2:e0"
+            - "2d:fb:d0:95:91:b8:3d:0b:6a:b4:17:ee:51:0e:97:65"
       - checkout
       -run: git clone git@github.com:tkmade7/Scala-CI.git
       - run:
