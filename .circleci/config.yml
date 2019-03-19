@@ -10,6 +10,8 @@ jobs:
           fingerprints:
             - "1f:c6:0a:f9:1b:c8:64:b8:92:72:9d:b0:a0:9b:b3:0d"
       - run: git clone git@github.com:tkmade7/Scala-CI.git
+      - run: git clone git@github.com:tkmade7/headless-selenium.git
+      - run: pwd;ls -latr Scala-CI; echo "\n"; ls -latr headless-selenium
       - run:
           name: Greeting
           command: echo ${BRANCH_NAME}
