@@ -9,7 +9,11 @@ jobs:
           fingerprints:
             - 2d:fb:d0:95:91:b8:3d:0b:6a:b4:17:ee:51:0e:97:65
       - checkout
-      -run: git clone git@github.com:tkmade7/Scala-CI.git
+      -run: 
+          name: 
+          command: >-
+            GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_fingerprint'
+            git clone git@github.com:tkmade7/Scala-CI.git ~/Scala-CI
       - run:
           name: Greeting
           command: echo ${BRANCH_NAME}
