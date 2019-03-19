@@ -6,7 +6,10 @@ jobs:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      -run: echo "Manju"
+      - add_ssh_keys:
+          fingerprints:
+            - "1f:c6:0a:f9:1b:c8:64:b8:92:72:9d:b0:a0:9b:b3:0d"
+      - run: echo "Manju"
       - run:
           name: Greeting
           command: echo ${BRANCH_NAME}
